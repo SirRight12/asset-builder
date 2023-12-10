@@ -40,11 +40,11 @@ async function read(file) {
     return new Promise((resolve,reject) => {
         const reader = new FileReader()
         reader.onload = function (event) {
+            //get the base64
+            let res = reader.result.toString()
             if (!res) {
                 reject("No base 64 for some reason")
             }
-            //get the base64
-            let res = reader.result.toString()
             //seperate the b64 from the garbage
             res = res.split(",")[1]
             //add it to the filesJS object so it can be handled by files.js
